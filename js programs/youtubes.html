@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>YouTube.com Clone</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <style>
+    .menu{
+        height:30px;
+        margin-left:24px;
+        margin-right: 20px;
+        cursor:pointer
+      
+    }
+    .youtubelogo{
+      height:30px;
+    }
+    .youtubelogo:hover{
+      box-shadow:5px 3px 8px rgb(0, 0, 0);
+      transition: 1s;
+    }
+     .header{
+      height: 55px;
+      display:flex;
+      flex-direction: row;
+      justify-content: space-between;
+      position: fixed;
+      top:0px;
+      left:0px;
+      right:0px;
+      background-color: white;
+      border-bottom-width:1px ;
+      border-bottom-style: solid;
+      border-bottom-color:grey ;
+      z-index:100;
+     }
+     .left-section{
+      width:150px;
+      display: flex;
+      align-items: center;
+     }
+     .middle-section{
+      
+     
+      flex:1;
+      margin-left:70px;
+      margin-right:35px;
+      max-width:500px;
+      display: flex;
+      align-items: center;
+     }
+     .searchbutton{
+      height: 40px;
+      width: 66px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(192,192,192);
+      background-color: white;
+      margin-left:-1.5px;
+      margin-right:8px;
+      
+     }
+     .search-icon{
+      height:28px;
+      margin-top: 4px;
+
+     }
+     .mic{
+      height: 40px;
+      width:40px;
+      background-color:white;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(255, 255, 255);
+      border-radius:20px;
+      border:none;
+     }
+     .miclogo{
+      height:31px;
+      margin-right:0px;
+      margin-left:0px;
+     }
+     .right-section{
+      background-color:white;
+      width:400px;
+      display:flex;
+     }
+      p {
+        color:white;
+        font-family: Roboto, Arial;
+        margin-top: 0;
+        margin-bottom: 0;
+       
+      }
+        body{
+          margin:0;
+          padding-top:80px;
+          padding-left:150px;
+          padding-right:10px;
+           }
+      .thumbnail {
+        width: 100%;
+        cursor:pointer;
+        border-radius: 10px;
+      }
+
+      .search-bar {
+        margin-left:20px;
+        flex:1;
+        height:36px;
+        padding-left:12px;
+        font-size: 16px;
+        border-style: solid;
+        border-color:rgb(192,192,192);
+        border-radius:4px;
+        box-shadow:inset 1px 2px 1px rgb(190, 183, 183);
+      }
+      .search-bar::placeholder{
+        font-family:arial;
+        font-size: 16px;
+      }
+      .video-title {
+        color:white;
+        margin-top: 0;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 20px;
+        margin-bottom: 12px;
+        cursor:pointer;
+      }
+
+      .video-info-grid {
+        display: grid;
+        grid-template-columns: 50px 1fr;
+        cursor:pointer;
+       
+      }
+
+      .profile-picture {
+        width: 36px;
+        border-radius: 50px;
+        cursor:pointer;
+      }
+
+      .thumbnail-row {
+        margin-bottom: 8px;
+        position: relative;
+      }
+
+      .video-author,
+      .video-stats {
+        color:white;
+        font-size: 12px;
+        color: rgb(96, 96, 96);
+        
+      }
+
+      .video-author {
+        color:white;
+        margin-bottom: 4px;
+        cursor:pointer;
+      }
+      .video-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        column-gap: 16px;
+        row-gap: 40px;
+      }
+      .sidebar{
+        position: fixed;
+        left:0;
+        bottom:0;
+        top:55px;
+        background-color: white;
+        width:140px;
+        z-index:101;
+        padding-top: 5px;
+        border-color: black;
+      }
+      .sidebar-link img{
+        height:35px;
+      }
+      .sidebar-link{
+        
+        height:76px;
+        margin-bottom: 4px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+      }
+      .sidebar-link:hover{
+        box-shadow: 1px 1px 9px black;
+      }
+      .video-time{
+        background-color: black;
+        color:white;
+        position: absolute;
+        bottom:8px;
+        right:5px;
+        font-family:Arial;
+        font-weight:500;
+        font-size:12px;
+        padding-top:4px;
+        padding-bottom:4px;
+        padding-left:3px;
+        padding-right: 3px;
+        border-radius:3px;
+      }
+      .notification{
+        position: relative;
+      }
+      .notification-number{
+        position: absolute;
+        top:-4px;
+        right:-4px;;
+        background-color: red;
+        border-radius: 20px;
+        color:white;
+        padding-left:2px;
+        border:solid;
+      }
+      .uploadicon{
+        height: 30px;
+        margin-left:30px;
+        margin-top: 10px;;
+      }
+      .appsicon{
+        height:30px;
+        margin-top:10px;
+        margin-left: 25px;
+      }
+      .notificationimage{
+        height:30px;
+        margin-top:10px;
+        margin-left: 25px;
+        border-radius: 20px;
+        position: relative;
+        
+      }
+      .mail{
+        height: 30px;
+        border-radius: 25px;
+        margin-top:10px;
+        margin-left:15px;
+      }
+      .names{
+        font-family:arial;
+        font-size:12px;
+        font-weight: 100;
+        cursor:pointer;
+      }
+      
+    </style>
+  </head>
+  <body style="background-color: skyblue;">
+    <div class="header">
+    <div class="left-section">
+      <img class="menu" title="3 dotted lines" src="menu1.jpg">
+      <img class="youtubelogo" title="Main logo" src="logo.png">
+    </div>
+    <div class="middle-section"> <input class="search-bar" type="text" placeholder="Search">
+    <button class="searchbutton">
+      <img class="search-icon" title="click me to see!" src="search.png">
+    </button>
+  <button class="mic" title="lets talk!">
+    <img class="miclogo" src="mic.png">
+  </button></div>
+  
+    <div class="right-section">
+      <img class="uploadicon" title="upload here!" src="uploadicon.jpeg">
+      <img class="appsicon" title="All in one." src="youtubeapps1.png">
+      <div class="notification" >
+        <img class="notificationimage" title="3 notifications" src="notification.png">
+      <div class="notification-number">3</div>
+      </div>
+      <img class="mail" title="profile" src="mailpic.jpg">
+    </div>
+     </div>
+    <div class="sidebar">
+     <div class="sidebar-link">
+      <img src="home.png">
+      <div class="names" >Home</div>
+     </div>
+     <div class="sidebar-link">
+      <img src="shorts.png">
+      <div class="names">Shorts</div>
+     </div>
+     <div class="sidebar-link">
+      <img src="subscriptions.png">
+      <div class="names">Subscriptions</div>
+     </div>
+     <div class="sidebar-link">
+      <img src="librarypic.png">
+      <div class="names">Library</div>
+     </div>
+     <div class="sidebar-link">
+      <img src="historypic.png">
+      <div class="names">History</div>
+     </div>
+     <div class="sidebar-link">
+      <img src="watchlaterpic.png">
+      <div class="names">Watch Later</div>
+     </div>
+      
+    </div>
+    <div class="video-grid">
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic2.webp">
+        <div class="video-time">14:20</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic21.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              Want to learn English simply?
+            </p>
+            <p class="video-author">
+              Marques Brownlee
+            </p>
+            <p class="video-stats">
+              3.4M views &#183 6 months ago
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic3.webp">
+          <div class="video-time" >10:02</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic23.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              The power of not Reacting !
+            </p>
+            <p class="video-author">
+              Markiplier
+            </p>
+            <p class="video-stats">
+              19M views &#183 4 years ago
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="thumbnail-1.avif">
+          <div class="video-time">4:00</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic24.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              KEEDA movie official Teaser
+            </p>
+            <p class="video-author">
+              SSSniperWolf
+            </p>
+            <p class="video-stats">
+              1M views &#183 2 months ago
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic1.png">
+          <div class="video-time">8:17</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic25.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+            Develop Webpage page isng HTML5 and CSS and SQL. 
+            </p>
+            <p class="video-author">
+              Veritasium
+            </p>
+            <p class="video-stats">
+              34k views &#183 4 months ago
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic4.webp">
+          <div class="video-time">7:56</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic26.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+             Grid or Flex keep a check point on this confusion. 
+            </p>
+            <p class="video-author">
+              CS Dojo
+            </p>
+            <p class="video-stats">
+              519K views &#183 5 years ago
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic5.webp">
+          <div class="video-time">7:56</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic27.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+            OPPENHEIMER Review OMG ! 
+            </p>
+            <p class="video-author">
+              ThyView
+            </p>
+            <p class="video-stats">
+              5K views &#183 5 hours ago
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic6.webp">
+          <div class="video-time">11:23:00</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic20.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+            Javascript Full Course by supersimpledev. 
+            </p>
+            <p class="video-author">
+              SuperSimpleDev
+            </p>
+            <p class="video-stats">
+              519K views &#183 5 years ago
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic7.webp">
+          <div class="video-time">1:21:03</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic20.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+              Git & GitHub Full Course by supersimpledev.
+            </p>
+            <p class="video-author">
+              SuperSimpleDev
+            </p>
+            <p class="video-stats">
+              9K views &#183 7 months ago
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic8.webp">
+          <div class="video-time">1:56</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic20.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+            React, Angular and Vscode in 90 seconds by Supersimpledev!
+            </p>
+            <p class="video-author">
+              SuperSimpleDev
+            </p>
+            <p class="video-stats">
+              200K views &#183 11 months ago
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic9.webp">
+          <div class="video-time">7:56</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic26.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+            One of the gretest speech by|steve jobs 
+            </p>
+            <p class="video-author">
+              CS Dojo
+            </p>
+            <p class="video-stats">
+              99K views &#183 12 months ago
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic10.webp">
+          <div class="video-time">47:46</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic20.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+            Amazon forests in 4k resolution 
+            </p>
+            <p class="video-author">
+              CS Dojo
+            </p>
+            <p class="video-stats">
+              34K views &#183 1 years ago
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic11.webp">
+          <div class="video-time">27:06</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic23.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+            Campig in the Heavyrain Forest by Harybrook.  
+            </p>
+            <p class="video-author">
+              My Pleasent vlogs
+            </p>
+            <p class="video-stats">
+              231K views &#183 1 years ago
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic12.webp">
+          <div class="video-time">57:06</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic21.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+            Building a natural house in the great southern forests! 
+            </p>
+            <p class="video-author">
+              SimonNatural Villa 
+            </p>
+            <p class="video-stats">
+              49K views &#183 4 months ago
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic13.webp">
+          <div class="video-time">7:56</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic22.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+            Natural wonders around the world!Oops  
+            </p>
+            <p class="video-author">
+              My Amazing Eyes
+            </p>
+            <p class="video-stats">
+              234K views &#183 10 months ago
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic14.webp">
+          <div class="video-time">7:56</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic20.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+            Project-K official teaser hidden elements 
+            </p>
+            <p class="video-author">
+              Kushi reviews
+            </p>
+            <p class="video-stats">
+              3K views &#183 5 hours ago
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic15.webp">
+          <div class="video-time">7:56</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic27.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+            Chandrayan-3 live broadcasting...  
+            </p>
+            <p class="video-author">
+              On my views
+            </p>
+            <p class="video-stats">
+              2.5K views &#183 1 day ago
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic16.webp">
+          <div class="video-time">7:56</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic19.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+            Placements in sharp 3 months come join with me. 
+            </p>
+            <p class="video-author">
+             Raghu tech
+            </p>
+            <p class="video-stats">
+              79K views &#183 6 months ago
+            </p>
+          </div>
+        </div>
+      </div>
+      <div class="video-preview">
+        <div class="thumbnail-row">
+          <img class="thumbnail" src="pic17.webp">
+          <div class="video-time">34:20</div>
+        </div>
+        <div class="video-info-grid">
+          <div class="channel-picture">
+            <img class="profile-picture" src="pic18.jpg">
+          </div>
+          <div class="video-info">
+            <p class="video-title">
+            My Heart loved this place. Northen Terrains  
+            </p>
+            <p class="video-author">
+              Vlogs never dissapoint
+            </p>
+            <p class="video-stats">
+              1M views &#180 3 years ago
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    
+   
+  </body>
+</html>
